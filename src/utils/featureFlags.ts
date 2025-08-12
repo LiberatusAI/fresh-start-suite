@@ -7,7 +7,7 @@ export const FeatureFlags = {
    * Controls whether to use the new value-first onboarding flow
    * vs the existing plan-selection-first flow
    */
-  VALUE_FIRST_ONBOARDING: (import.meta.env.VITE_ENABLE_VALUE_FIRST_ONBOARDING || "") === 'true' || import.meta.env.NODE_ENV === 'production',
+  VALUE_FIRST_ONBOARDING: (import.meta.env.VITE_ENABLE_VALUE_FIRST_ONBOARDING || "") === 'true' || import.meta.env.PROD,
 } as const;
 
 /**
