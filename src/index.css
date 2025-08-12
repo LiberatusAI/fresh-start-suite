@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========== BASE STYLES ========== */
+@layer base {
+  :root {
+    --background: 0 0% 99%; /* #FCFDFC - light primary */
+    --foreground: 0 0% 14%; /* #202323 - dark primary */
+    --accent: 44 16% 79%; /* #CFCAB7 - accent */
+    --primary: 0 0% 14%; /* #202323 - dark primary */
+    --primary-foreground: 0 0% 99%; /* #FCFDFC - light primary */
+    --muted: 120 8% 95%; /* #F1F4F2 - secondary */
+    --muted-foreground: 0 0% 40%;
+    --border: 120 8% 90%;
+    --input: 120 8% 90%;
+    --radius: 1.25rem;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 14%;
+
+    --secondary: 120 8% 95%; /* #F1F4F2 */
+    --secondary-foreground: 0 0% 14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 0 0% 14%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 0 0% 14%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 120 8% 95%;
+    --sidebar-accent-foreground: 0 0% 14%;
+    --sidebar-border: 120 8% 91%;
+    --sidebar-ring: 44 16% 79%;
+  }
+
+  .dark {
+    --background: 0 0% 14%; /* #202323 - dark primary */
+    --foreground: 0 0% 99%; /* #FCFDFC - light primary */
+    --accent: 44 16% 79%; /* #CFCAB7 - accent */
+    --primary: 0 0% 99%; /* #FCFDFC - light primary */
+    --primary-foreground: 0 0% 14%; /* #202323 - dark primary */
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --card: 0 0% 16%;
+    --card-foreground: 0 0% 99%;
+
+    --popover: 0 0% 16%;
+    --popover-foreground: 0 0% 99%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 99%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --sidebar-background: 0 0% 16%;
+    --sidebar-foreground: 0 0% 99%;
+    --sidebar-primary: 0 0% 99%;
+    --sidebar-primary-foreground: 0 0% 14%;
+    --sidebar-accent: 0 0% 20%;
+    --sidebar-accent-foreground: 0 0% 99%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 44 16% 79%;
+  }
+
+  html, body, #root {
+    @apply h-full;
+  }
+
+  body {
+    @apply font-sans text-foreground antialiased overflow-x-hidden;
+    font-family: 'Inter', 'DM Sans', 'sans-serif';
+    letter-spacing: -0.01em;
+    /* Improve mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent zoom on iOS inputs */
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Light mode perfectly subtle stone texture */
+  html:not(.dark) body {
+    background-color: #FCFDFC; /* Primary light as base */
+    background-image: 
+      /* Perfect balance overlay - texture just barely visible */
+      linear-gradient(rgba(252, 253, 252, 0.90), rgba(241, 244, 242, 0.92)),
+      /* Stone texture image */
+      url('/stone-texture.png');
+    
+    background-size: 
+      cover,
+      1000px 1000px;
+    
+    background-position: 
+      center,
+      0 0;
+    
+    background-repeat: 
+      no-repeat,
+      repeat;
+    
+    background-attachment: fixed;
+    
+    /* Very gentle texture visibility */
+    background-blend-mode: overlay, normal;
+  }
+  
+  /* Dark mode with very subtle dark stone texture */
+  html.dark body {
+    background-color: #202323; /* Your primary dark color */
+    background-image: 
+      /* Simple dark overlay to make texture very subtle */
+      linear-gradient(rgba(32, 35, 35, 0.96), rgba(32, 35, 35, 0.97)),
+      /* Dark stone texture image */
+      url('/stone-texture-dark.png');
+    
+    background-size: 
+      cover,
+      1200px 1200px;
+    
+    background-position: 
+      center,
+      0 0;
+    
+    background-repeat: 
+      no-repeat,
+      repeat;
+    
+    background-attachment: fixed;
+    
+    /* Simple normal blending to avoid color casts */
+    background-blend-mode: normal, normal;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    /* Ensure minimum touch target size */
+    button, 
+    [role="button"], 
+    input[type="checkbox"], 
+    input[type="radio"],
+    .clickable {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Prevent horizontal scroll */
+    html, body {
+      overflow-x: hidden;
+    }
+    
+    /* Better text sizing for mobile */
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.125rem; }
+  }
+}
+
+/* ========== COMPONENT STYLES ========== */
+@layer components {
+  .minimal-card {
+    @apply bg-card border border-border rounded-2xl shadow-none p-8;
+  }
+  .minimal-section {
+    @apply bg-background rounded-2xl p-8;
+  }
+  .minimal-divider {
+    @apply border-t border-border my-8;
+  }
+}
+
+/* ========== ANIMATION KEYFRAMES ========== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ========== TRANSITION ANIMATIONS ========== */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
