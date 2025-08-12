@@ -18,9 +18,9 @@ import { useStripe } from '@stripe/react-stripe-js';
 
 // Define your Stripe Price IDs (Monthly only)
 const STRIPE_PRICE_IDS = {
-  basic: process.env.VITE_STRIPE_INTRO_MONTHLY_PLAN_ID || "" || 'price_1Ri6CHJk8bLGmbLerpTKHQcw',
-  pro: process.env.VITE_STRIPE_PRO_MONTHLY_PLAN_ID || "" || 'price_1Ri6BfJk8bLGmbLeztVohnRv',
-  elite: process.env.VITE_STRIPE_ELITE_MONTHLY_PLAN_ID || "" || 'price_1Ri6BIJk8bLGmbLeijuQQTLn',
+  basic: import.meta.env.VITE_STRIPE_INTRO_MONTHLY_PLAN_ID || "" || 'price_1Ri6CHJk8bLGmbLerpTKHQcw',
+  pro: import.meta.env.VITE_STRIPE_PRO_MONTHLY_PLAN_ID || "" || 'price_1Ri6BfJk8bLGmbLeztVohnRv',
+  elite: import.meta.env.VITE_STRIPE_ELITE_MONTHLY_PLAN_ID || "" || 'price_1Ri6BIJk8bLGmbLeijuQQTLn',
 };
 
 export function SubscriptionSelection() {

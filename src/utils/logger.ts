@@ -17,7 +17,7 @@ interface LogEntry {
 }
 
 class Logger {
-  private isDev = process.env.NODE_ENV === 'development';
+  private isDev = import.meta.env.NODE_ENV === 'development';
   private logs: LogEntry[] = [];
   private maxLogs = 1000; // Keep last 1000 logs in memory
 
@@ -183,7 +183,7 @@ class Logger {
 export const logger = new Logger();
 
 // Development helpers
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.NODE_ENV === 'development') {
   // Make logger available globally for debugging
   (window as any).logger = logger;
   

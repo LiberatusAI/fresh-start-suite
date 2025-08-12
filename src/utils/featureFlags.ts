@@ -7,7 +7,7 @@ export const FeatureFlags = {
    * Controls whether to use the new value-first onboarding flow
    * vs the existing plan-selection-first flow
    */
-  VALUE_FIRST_ONBOARDING: (process.env.VITE_ENABLE_VALUE_FIRST_ONBOARDING || "") === 'true' || process.env.NODE_ENV === 'production',
+  VALUE_FIRST_ONBOARDING: (import.meta.env.VITE_ENABLE_VALUE_FIRST_ONBOARDING || "") === 'true' || import.meta.env.NODE_ENV === 'production',
 } as const;
 
 /**
@@ -32,7 +32,7 @@ export const FeatureFlagUtils = {
    * Override feature flags for testing (development only)
    */
   override: (flag: keyof typeof FeatureFlags, value: boolean) => {
-    if (process.env.DEV) {
+    if (import.meta.env.DEV) {
       // @ts-ignore - Runtime override for development
       FeatureFlags[flag] = value;
       console.log(`🚩 Feature flag ${flag} overridden to: ${value}`);
@@ -45,7 +45,7 @@ export const FeatureFlagUtils = {
    * Log current feature flag states (development only)
    */
   debug: () => {
-    if (process.env.DEV) {
+    if (import.meta.env.DEV) {
       console.log('🚩 Current feature flags:', FeatureFlags);
     }
   }

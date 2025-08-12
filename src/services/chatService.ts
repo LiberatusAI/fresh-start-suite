@@ -47,7 +47,7 @@ export async function sendChatMessage(message: string): Promise<ChatResponse> {
     // Call our Edge Function with the user's message
     // Note: Local Supabase Edge Functions require full URL (different port)
     // In production, this would use a relative path or env variable
-    const supabaseUrl = process.env.VITE_SUPABASE_URL || "" || 'http://127.0.0.1:54321';
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "" || 'http://127.0.0.1:54321';
     const response = await fetch(`${supabaseUrl}/functions/v1/chat-completion`, {
       method: 'POST',
       headers: {
