@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+    "std/http/server.ts": "https://deno.land/std@0.168.0/http/server.ts",
+    "@google/generative-ai": "https://esm.sh/@google/generative-ai@0.24.0",
+    "resend": "npm:resend@2.1.0-canary.1",
+    "playwright": "https://deno.land/x/playwright@v1.40.1/mod.ts"
+  }
+}

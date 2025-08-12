@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "pdf-lib": "https://esm.sh/pdf-lib@1.17.1",
+    "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts"
+  }
+}
